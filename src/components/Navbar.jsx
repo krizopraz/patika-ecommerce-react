@@ -9,10 +9,12 @@ const Navbar = () =>{
 		<>
 			<Nav>
 				<Content>
-					<Logo />
+					<Link exact to="/">
+						<Logo />
+					</Link>
 					<Upperlinks>
 						<li>
-							<Link exact to="/">Ürünlerim</Link>
+							<Link exact to="/">Ürünler</Link>
 						</li>
 						<li>
 							<Link to="/favoriler">Favori Ürünlerim</Link>
@@ -27,10 +29,14 @@ const Navbar = () =>{
 
 				</Content>
 			</Nav>
-			{state?(<Dropdown>
+			<Button  onClick={()=>setstate(!state)}>
+
+				<MenuButton active={state} />
+			</Button>
+			{state ? <Dropdown>
 				<ul>
 					<li>
-						<Link exact to="/">Ürünlerim</Link>
+						<Link exact to="/">Ürünler</Link>
 					</li>
 					<li>
 						<Link to="/favoriler">Favori Ürünlerim</Link>
@@ -42,20 +48,19 @@ const Navbar = () =>{
 						<Link to="/sepetim">Alışveriş Sepetim</Link>
 					</li>
 				</ul>
-			</Dropdown>) : ''}
-			<Button onClick={()=>setstate(!state)}>
-				<MenuButton />
-			</Button>
+			</Dropdown>:''}
 		</>
 	)
 }
 
 const Dropdown = styled.div`
 position:fixed;
-top:68px;
 z-index:40;
+bottom:68px;right:40px;
 background:#272727;
-width:100vw;
+width:max-content;
+padding:1em;
+border-radius:6px;
 &>ul{
 	&>*{
 		padding:1rem 0;
@@ -67,7 +72,7 @@ width:100vw;
 	flex-direction:column;
 }
 `
-const Button = styled.div`
+const Button = styled.button`
 border:none;
 background: #272727;
 border-radius:50px;
@@ -81,9 +86,6 @@ place-content:center;
 margin-bottom:10px;
 margin-right:10px;
 z-index:40;
-&:active{
-
-}
 @media screen and (min-width:1440px){
 	display:none;
 }

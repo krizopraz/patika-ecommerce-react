@@ -1,17 +1,18 @@
-import React, {createContext, useState} from 'react'
+import React, {createContext, useEffect, useState} from 'react'
 import PropTypes from 'prop-types'
 export const SepetContext  = createContext()
-const Sepet = ({children}) => {
-	const[sepet,setSepet] = useState({
-		id:0,title:'',price:''
-	})
+const Sepet = (props) => {
+	const[sepet,setSepet] = useState([])
+	useEffect(() => {
+		console.log(sepet)
+	}, [sepet])
 	return(
 		<SepetContext.Provider value={[sepet,setSepet]}>
-			{children}
+			{props.children}
 		</SepetContext.Provider>
 	)
 }
 export default Sepet
 Sepet.propTypes = {
-	children: PropTypes.node.isRequired
+	children: PropTypes.node
 }

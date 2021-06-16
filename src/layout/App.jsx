@@ -4,6 +4,9 @@ import Urunler from './pages/Urunler'
 import { Route ,Switch} from 'react-router-dom'
 import axios from 'axios'
 import _urun from './pages/_urun'
+import Favoriler from './pages/Favoriler'
+import AlisverisSepeti from './pages/AlısverisSepeti'
+import Iletisim from './pages/Iletisim'
 const App = ()=>{
 	const [satilacakUrunler, setUrunler] = useState([])
 	useEffect(()=>{
@@ -29,6 +32,15 @@ const App = ()=>{
 					</Route>
 					<Route path='/urunler/:id'>
 						<_urun />
+					</Route>
+					<Route path='/favoriler'>
+						<Favoriler/>
+					</Route>
+					<Route path='/iletisim'>
+						<Iletisim/>
+					</Route>
+					<Route path='/sepetim'>
+						<AlisverisSepeti/>
 					</Route>
 				</Switch>
 			</main>
